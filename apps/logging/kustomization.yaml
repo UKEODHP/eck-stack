@@ -29,3 +29,12 @@ helmCharts:
     releaseName: kibana
     namespace: logging
     version: 8.5.1
+
+patches:
+  - target:
+      kind: Secret
+    patch: |-
+      - op: add
+        path: /metadata/annotations
+        value:
+          argocd.argoproj.io/sync-wave: "-10"
