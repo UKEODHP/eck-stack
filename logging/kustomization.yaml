@@ -1,17 +1,31 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: logging
+
 resources:
   - namespace.yaml
 
 helmCharts:
-  - name: eck-operator-crds
+  - name: filebeat
     repo: https://helm.elastic.co
-    releaseName: eck-crds
+    releaseName: filebeat
     namespace: logging
-    version: 2.14.0
-  - name: eck-stack
+    version: 8.5.1
+    valuesFile: filebeat.values.yaml
+  - name: logstash
     repo: https://helm.elastic.co
-    releaseName: elk
+    releaseName: logstash
     namespace: logging
-    version: 0.12.1
+    version: 8.5.1
+    valuesFile: logstash.values.yaml
+  - name: elasticsearch
+    repo: https://helm.elastic.co
+    releaseName: elasticsearch
+    namespace: logging
+    version: 8.5.1
+  - name: kibana
+    repo: https://helm.elastic.co
+    releaseName: kibana
+    namespace: logging
+    version: 8.5.1
