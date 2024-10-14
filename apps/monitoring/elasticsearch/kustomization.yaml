@@ -3,7 +3,7 @@ kind: Kustomization
 
 commonAnnotations:
   argocd.argoproj.io/sync-wave: "-10"
-  
+
 helmCharts:
   - name: elasticsearch
     repo: https://helm.elastic.co
