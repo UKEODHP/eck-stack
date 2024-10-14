@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: eodhp
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:EO-DataHub/eodhp-argocd-deployment.git
+        revision: HEAD
+        directories:
+          - path: apps/*
+  template:
+    metadata:
+      name: "{{path[1]}}"
+    spec:
+      project: default
+      source:
+        repoURL: git@github.com:EO-DataHub/eodhp-argocd-deployment.git
+        targetRevision: HEAD
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - allowEmpty=true
