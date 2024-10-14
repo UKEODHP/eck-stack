@@ -37,4 +37,5 @@ patches:
       - op: add
         path: /metadata/annotations
         value:
+          argocd.argoproj.io/hook: Pre-Sync
           argocd.argoproj.io/sync-wave: "-10"
