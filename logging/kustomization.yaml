@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespace.yaml
+
+helmCharts:
+  - name: eck-operator-crds
+    repo: https://helm.elastic.co
+    releaseName: eck-crds
+    namespace: logging
+    version: 2.14.0
+  - name: eck-stack
+    repo: https://helm.elastic.co
+    releaseName: elk
+    namespace: logging
+    version: 0.12.1
