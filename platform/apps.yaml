@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: git@github.com:EO-DataHub/eodhp-argocd-deployment.git
+        repoURL: git@github.com:UKEODHP/eck-stack.git
         revision: HEAD
         directories:
           - path: apps/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: git@github.com:EO-DataHub/eodhp-argocd-deployment.git
+        repoURL: git@github.com:UKEODHP/eck-stack.git
         targetRevision: HEAD
         path: "{{path}}"
       destination:

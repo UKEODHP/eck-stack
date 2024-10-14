@@ -4,7 +4,7 @@
 
 ```bash
 kubectl apply -k apps/argocd  # install argocd
-kubectl apply -k platform  # install argocd apps
+kubectl apply -f platform/apps.yaml  # install argocd apps
 ```
 
 ## ArgoCD UI
