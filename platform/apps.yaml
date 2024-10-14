@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: eodhp
+  name: platform
   namespace: argocd
 spec:
   generators:
     - git:
-        repoURL: git@github.com:UKEODHP/eck-stack.git
+        repoURL: https://github.com/UKEODHP/eck-stack.git
         revision: HEAD
         directories:
           - path: apps/*
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: git@github.com:UKEODHP/eck-stack.git
+        repoURL: https://github.com/UKEODHP/eck-stack.git
         targetRevision: HEAD
         path: "{{path}}"
       destination:
